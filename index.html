@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.loading-bar {
+				position: fixed;
+				top: 0;
+				right: 0;
+				left: 0;
+				z-index: 101;
+				display: none;
+				height: 2px;
+				pointer-events: none;
+				background: #4197ff;
+				-webkit-transform: translateX(-100%);
+				transform: translateX(-100%);
+			}
+			
+			.loading-bar.is-active {
+				display: block;
+				-webkit-animation: LoadingBarForward 1s ease-in-out .8s infinite;
+				animation: LoadingBarForward 1s ease-in-out .8s infinite;
+			}
+			
+			@-webkit-keyframes LoadingBarForward {
+				0% {
+					-webkit-transform: translateX(-100%);
+					transform: translateX(-100%)
+				}
+				40% {
+					-webkit-transform: translateX(0);
+					transform: translateX(0)
+				}
+				60% {
+					-webkit-transform: translateX(0);
+					transform: translateX(0)
+				}
+				to {
+					-webkit-transform: translateX(100%);
+					transform: translateX(100%)
+				}
+			}
+			
+			@keyframes LoadingBarForward {
+				0% {
+					-webkit-transform: translateX(-100%);
+					transform: translateX(-100%)
+				}
+				40% {
+					-webkit-transform: translateX(0);
+					transform: translateX(0)
+				}
+				60% {
+					-webkit-transform: translateX(0);
+					transform: translateX(0)
+				}
+				to {
+					-webkit-transform: translateX(100%);
+					transform: translateX(100%)
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="loading-bar"></div>
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script>
+			$(function(){
+				//开启loading bar
+				$(".loading-bar").addClass('is-active');
+				
+				setTimeout(function(){
+					//关闭loading bar
+					$(".loading-bar").removeClass('is-active');
+				}, 10000);
+			});
+		</script>
+	</body>
+
+</html>
